@@ -1,0 +1,89 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Province": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Amphur": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "District": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Title": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "University": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "NavList": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "NavSection": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "emailDs"
+  },
+  "SrsUser": {
+    "dataSource": "mongoDB",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "Faculty": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Major": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "ScoreType": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Event": {
+    "dataSource": "mongoDB",
+    "public": true
+  }
+}

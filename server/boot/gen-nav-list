@@ -1,0 +1,69 @@
+module.exports = function (app) {
+	app.dataSources.mongoDB.automigrate('navList', function (err) {
+		if (err) throw err;
+		
+		app.models.navSection.create([
+			{
+				"SECTION_PK": 1,
+				"SECTION_NAME": 'ตารางรหัส'
+			},
+			{
+				"SECTION_PK": 2,
+				"SECTION_NAME": 'รายงาน'
+			},
+			{
+				"SECTION_PK": 3,
+				"SECTION_NAME": 'ลงทะเบียน'
+			},
+			{
+				"SECTION_PK": 4,
+				"SECTION_NAME": 'Adminstration'
+			},
+			{
+				"SECTION_PK": 5,
+				"SECTION_NAME": 'ผู้เข้าร่วมโครงการ'
+			},
+		], function (err, navSection) {
+			if (err) throw err;
+
+			console.log('Models created: \n', navSection);
+		});
+
+		app.models.navList.create([
+			{
+				"LIST_PK": 1,
+				"LIST_NAME": 'ตารางรหัสคำนำหน้า',
+				"SECTION_PK": 1
+			},
+			{
+				"LIST_PK": 2,
+				"LIST_NAME": 'ตารางรหัสมหาวิทยาลัย',
+				"SECTION_PK": 1
+			},
+			{
+				"LIST_PK": 3,
+				"LIST_NAME": 'ตารางรหัสคณะ/ภาควิชา',
+				"SECTION_PK": 1
+			},
+			{
+				"LIST_PK": 4,
+				"LIST_NAME": 'ตารางรหัสสาขาวิชาเอก',
+				"SECTION_PK": 1
+			},
+			{
+				"LIST_PK": 5,
+				"LIST_NAME": 'ตารางรหัสประเภทคะแนน',
+				"SECTION_PK": 1
+			},
+			{
+				"LIST_PK": 6,
+				"LIST_NAME": 'ตารางรหัสกิจกรรม',
+				"SECTION_PK": 1
+			},
+		], function (err, navList) {
+			if (err) throw err;
+
+			console.log('Models created: \n', navList);
+		});
+	})
+};

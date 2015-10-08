@@ -1,0 +1,10 @@
+<h1>ลงทะเบียน</h1>
+<form name="registerForm" novalidate>
+	<label for="email">อีเมล :</label>
+	<input type="email" name="email" placeholder="อีเมล" ng-model="user.email">
+	<label for="password">รหัสผ่าน :</label>
+	<input type="password" name="password" placeholder="รหัสผ่าน" ng-model="user.password">
+	<input type="button" value="ลงทะเบียน" ng-click="signup()">
+</form>
+<a ui-sref="index">หน้าแรก</a>
+<a ui-sref="signin">ลงชื่อเข้าใช้</a>

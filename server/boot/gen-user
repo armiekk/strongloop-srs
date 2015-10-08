@@ -1,0 +1,37 @@
+module.exports = function (app) {
+	var User = app.models.SrsUser;
+	var Role = app.models.Role;
+	var RoleMapping = app.models.RoleMapping;
+
+	User.create({
+			admin: true,
+			email: 'nongarmza@gmail.com',
+			password: 'admin',
+			emailVerified : true
+		},
+		function (err, users) {
+			console.log(users);
+
+			Role.create({
+					name: 'Administrator'
+				},
+				function (err, role) {
+					if (err) throw err;
+
+					console.log('create role', role);
+
+					role.principals.create(
+						{
+							principalType: RoleMapping.USER,
+							principalId: users.USER_ID
+						},
+						function(err, principal){
+							if(err) throw err;
+							
+							console.log('create principal ', principal);
+						}
+					);
+				}
+			);
+		});
+};

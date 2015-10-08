@@ -1,0 +1,17 @@
+<div ng-show="!credentials">
+	<h1>ลงชื่อเข้าใช้</h1>
+	<form name="registerForm" novalidate>
+		<label for="email">อีเมล :</label>
+		<input type="email" name="email" placeholder="อีเมล" ng-model="user.email">
+		<label for="password">รหัสผ่าน :</label>
+		<input type="password" name="password" placeholder="รหัสผ่าน" ng-model="user.password">
+		<input type="button" value="ลงชื่อเข้าใช้งาน" ng-click="login()">
+	</form>
+	<a ui-sref="signup-user">ลงทะเบียน</a>
+</div>
+<div ng-show="credentials">
+	{{credentials}}
+	<div ng-controller="AuthLogoutController">
+		<input type="button" value="ออกจากระบบ" ng-click="logout()">
+	</div>
+</div>

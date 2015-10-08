@@ -1,0 +1,51 @@
+{
+  "name": "Province",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "PROVINCE_PK": {
+      "type": "number",
+      "id": true
+    },
+    "PROVINCE_NAME": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "amphurs": {
+      "type": "hasMany",
+      "model": "Amphur",
+      "foreignKey": "PROVINCE_PK"
+    },
+    "districts": {
+      "type": "hasMany",
+      "model": "District",
+      "foreignKey": "PROVINCE_PK"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "Administrator",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
