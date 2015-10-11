@@ -1,7 +1,8 @@
 (function () {
 	'use_strict';
 
-	angular.module('app', ['lbServices', 'ui.router', 'ngRoute', 'ngStorage'])
+	angular.module('app', 
+						['lbServices', 'ui.router', 'ngRoute', 'ngStorage', 'checklist-model', 'ngTable'])
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 			$urlRouterProvider.otherwise("/index");
 
@@ -47,7 +48,8 @@
 				})
 				.state('dashboard.title', {
 					url: '/table/title',
-					templateUrl: '../views/tableId/title.html'
+					templateUrl: '../views/tableId/title.html',
+					controller: 'titleController'
 				})
 				.state('dashboard.university', {
 					url: '/table/university',
@@ -85,7 +87,7 @@
 							if(next.url === '/signin'){
 								$state.go('dashboard');
 							}
-							$log.info($rootScope.credentials);
+							$log.info(value);
 						}, function (error) {
 							$log.info(error);
 							if (next.authenticate) {

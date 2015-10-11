@@ -20,59 +20,54 @@
 				</li>
 				<li class="pull-left header"><i class="fa fa-th"></i>ข้อมูลคำนำหน้า</li>
 			</ul>
+<!--			tab-->
 			<div class="tab-content">
 				<!-- แก้ไข -->
 				<div class="tab-pane" id="add">
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="UNIVERSITY_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ที่อยู่" ng-model="UNIVERSITY_ADDRESS" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-2">
-									<div class="form-group">
-										<label for="sex">เพศ :</label>
-										<select class="form-control" name="sex">
-											<option value="ชาย">ชาย</option>
-											<option value="หญิง">หญิง</option>
-										</select>
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="E-mail" ng-model="UNIVERSITY_EMAIL" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox"> คำนำหน้าทั่วไป
-										</label>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">สถานะ : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ใช้งาน
+											</label>
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
+											</label>
+										</div>
 									</div>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">แก้ไขข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -84,53 +79,47 @@
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="UNIVERSITY_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ที่อยู่" ng-model="UNIVERSITY_ADDRESS" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-2">
-									<div class="form-group">
-										<label for="sex">เพศ :</label>
-										<select class="form-control" name="sex">
-											<option value="ชาย">ชาย</option>
-											<option value="หญิง">หญิง</option>
-										</select>
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="E-mail" ng-model="UNIVERSITY_EMAIL" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox"> คำนำหน้าทั่วไป
-										</label>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">สถานะ : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ใช้งาน
+											</label>
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
+											</label>
+										</div>
 									</div>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">เพิ่มข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -142,33 +131,37 @@
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_NAME" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="UNIVERSITY_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
+								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
+										<label for="choose-status">สถานะ : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ใช้งาน
+											</label>
+											<label class="btn btn-primary">
+												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
+											</label>
+										</div>
 									</div>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">ค้นหาข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>

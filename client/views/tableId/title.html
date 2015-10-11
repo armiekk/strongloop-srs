@@ -26,31 +26,22 @@
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="รหัสคำนำหน้า" ng-model="TITLE_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า" ng-model="TITLE_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า (En)" ng-model="TITLE_NAME_ENG" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-2">
+								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
 										<label for="sex">เพศ :</label>
 										<select class="form-control" name="sex">
@@ -61,18 +52,21 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox"> คำนำหน้าทั่วไป
+								<div class="col-md-offset-3 col-md-6">
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-primary">
+											<input type="checkbox" autocomplete="off"> คำนำหน้าทั่วไป
 										</label>
 									</div>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">แก้ไขข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -84,31 +78,22 @@
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="รหัสคำนำหน้า" ng-model="TITLE_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า" ng-model="TITLE_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า (En)" ng-model="TITLE_NAME_ENG" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-2">
+								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
 										<label for="sex">เพศ :</label>
 										<select class="form-control" name="sex">
@@ -119,18 +104,21 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox"> คำนำหน้าทั่วไป
+								<div class="col-md-offset-3 col-md-6">
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-primary">
+											<input type="checkbox" autocomplete="off"> คำนำหน้าทั่วไป
 										</label>
 									</div>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">เพิ่มข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -142,33 +130,27 @@
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
-								<div class="col-md-offset-3 col-md-3">
-									<div class="form-group">
-										<label for="title-id">รหัสคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="รหัสคำนำหน้า" ng-model="TITLE_PK" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า" ng-model="TITLE_NAME" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-3 col-md-5">
-									<div class="form-group">
-										<label for="title-id">ชื่อคำนำหน้า(En) :</label>
-										<input type="text" class="form-control">
-									</div>
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อคำนำหน้า (En)" ng-model="TITLE_NAME_ENG" required="false"></input-box>
 								</div>
-							</div><br>
+							</div>
+							<br>
 							<div class="row">
-								<div class="col-md-offset-4 col-md-4">
-									<button class="btn btn-success">เพิ่มข้อมูล</button>&nbsp;&nbsp;
-									<button class="btn btn-danger">ยกเลิก</button>
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">ค้นหาข้อมูล</button>
+										<button class="btn btn-danger">ยกเลิก</button>
+									</div>
 								</div>
 							</div>
 						</form>
@@ -182,4 +164,35 @@
 		<!-- nav-tabs-custom -->
 	</div>
 	<!-- /.col -->
+</div>
+
+
+<!--table-->
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">ตารางข้อมูลคำนำหน้า</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<table ng-table="tableParams" class="table table-bordered  table-hover">
+					<!--
+						<tr class="text-center">
+							<td colspan="5">ไม่พบข้อมูล</td>
+						</tr>
+-->
+					<tr ng-repeat="row in $data">
+						<td style="width: 1%;"><input type="checkbox" class="custom-checkbox"></td>
+						<td data-title="'ชื่อคำนำหน้า'" sortable="'TITLE_NAME'">{{row.TITLE_NAME}}</td>
+						<td data-title="'ชื่อคำนำหน้าภาษาอังกฤษ'" sortable="'TITLE_NAME_ENG'">{{row.TITLE_NAME_ENG}}</td>
+						<td data-title="'ชื่อคำนำหน้าภาษาอังกฤษ'" sortable="'TITLE_SEX'">{{row.TITLE_SEX}}</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
 </div>

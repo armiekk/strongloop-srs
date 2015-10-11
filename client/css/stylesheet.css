@@ -1,0 +1,11 @@
+table>thead>tr>th.custom-checkbox{
+	cursor: pointer;
+}
+table>tbody>tr>td.custom-checkbox{
+	cursor: pointer;
+}
+input.custom-checkbox {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}

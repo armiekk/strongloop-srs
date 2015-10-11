@@ -1,0 +1,16 @@
+module.exports = function (app) {
+	app.dataSources.mongoDB.automigrate('Title', function (err) {
+		if (err) throw err;
+		
+		app.models.Title.create(
+			[
+				{ TITLE_NAME: 'นาย',TITLE_NAME_ENG: 'MR.' , TITLE_SEX: 'ชาย'},
+				{ TITLE_NAME: 'นางสาว',TITLE_NAME_ENG: 'MRS.' , TITLE_SEX: 'หญิง'}
+			], 
+			function(err, title){
+				if(err) console.log(err);
+				
+				console.log('create title', title);
+			});
+	});
+};
