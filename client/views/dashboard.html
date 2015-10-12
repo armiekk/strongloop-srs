@@ -62,7 +62,7 @@
 			</div>
 			<!-- Navbar Right Menu -->
 			<div class="navbar-custom-menu">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" ng-controller="AuthSignoutController">
 					<!-- User Account Menu -->
 					<li class="dropdown user user-menu">
 						<!-- Menu Toggle Button -->
@@ -70,12 +70,12 @@
 							<!-- The user image in the navbar-->
 							<i class="fa fa-user"></i>
 							<!-- hidden-xs hides the username on small devices so only the image appears. -->
-							<span class="hidden-xs">กัมปนาท  เก่งพรสกุล</span>
+							<span class="hidden-xs">{{credentials.email}}</span>
 						</a>
 					</li>
 					<!-- Control Sidebar Toggle Button -->
 					<li>
-						<a href="#" data-toggle="control-sidebar">ลงชื่อออก &nbsp;<i class="fa fa-sign-out"></i></a>
+						<a href="#" ng-click="logout()">ลงชื่อออก &nbsp;<i class="fa fa-sign-out"></i></a>
 					</li>
 				</ul>
 			</div>

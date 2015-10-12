@@ -82,7 +82,15 @@
     "dataSource": "mongoDB",
     "public": true
   },
-  "Event": {
+  "EventType": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "QuestionType": {
+    "dataSource": "mongoDB",
+    "public": true
+  },
+  "Project": {
     "dataSource": "mongoDB",
     "public": true
   }

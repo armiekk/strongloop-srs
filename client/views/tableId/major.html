@@ -4,17 +4,17 @@
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs pull-right">
 				<li>
-					<a href="#add" data-toggle="tab">
+					<a href="#add" data-toggle="tab" ng-click="resetData()">
 						<i class="fa fa-pencil"></i>&nbsp;แก้ไขข้อมูล
 					</a>
 				</li>
 				<li>
-					<a href="#edit" data-toggle="tab">
+					<a href="#edit" data-toggle="tab" ng-click="resetData()">
 						<i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูล
 					</a>
 				</li>
 				<li class="active">
-					<a href="#search" data-toggle="tab">
+					<a href="#search" data-toggle="tab" ng-click="resetData()">
 						<i class="fa fa-search"></i>&nbsp;ค้นหา
 					</a>
 				</li>
@@ -24,25 +24,25 @@
 				<!-- แก้ไข -->
 				<div class="tab-pane" id="add">
 					<div class="container-fluid">
-						<form name="search-form">
+						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_PK" required="true"></input-box>
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.university.UNIVERSITY_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="FACULTY_PK" required="true"></input-box>
+									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="data.faculty.FACULTY_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก" ng-model="MAJOR_NAME" required="true"></input-box>
+									<input-box label="ชื่อวิชาเอก" ng-model="data.MAJOR_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก (En)" ng-model="MAJOR_NAME_ENG" required="false"></input-box>
+									<input-box label="ชื่อวิชาเอก (En)" ng-model="data.MAJOR_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
@@ -50,10 +50,10 @@
 									<div class="form-group">
 										<label for="choose-status">สถานะ : </label><br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -65,7 +65,7 @@
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
 										<button class="btn btn-success">แก้ไขข้อมูล</button>
-										<button class="btn btn-danger">ยกเลิก</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
 							</div>
@@ -76,25 +76,25 @@
 				<!-- เพิ่ม -->
 				<div class="tab-pane" id="edit">
 					<div class="container-fluid">
-						<form name="search-form">
+						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_PK" required="true"></input-box>
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.university.UNIVERSITY_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="FACULTY_PK" required="true"></input-box>
+									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="data.faculty.FACULTY_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก" ng-model="MAJOR_NAME" required="true"></input-box>
+									<input-box label="ชื่อวิชาเอก" ng-model="data.MAJOR_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก (En)" ng-model="MAJOR_NAME_ENG" required="false"></input-box>
+									<input-box label="ชื่อวิชาเอก (En)" ng-model="data.MAJOR_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
@@ -102,10 +102,10 @@
 									<div class="form-group">
 										<label for="choose-status">สถานะ : </label><br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -116,8 +116,8 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success">เพิ่มข้อมูล</button>
-										<button class="btn btn-danger">ยกเลิก</button>
+										<button class="btn btn-success" ng-click="addMajor(data)">เพิ่มข้อมูล</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
 							</div>
@@ -131,23 +131,23 @@
 						<form name="add-form">
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="UNIVERSITY_PK" required="true"></input-box>
+									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.university.UNIVERSITY_PK" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="FACULTY_PK" required="false"></input-box>
+									<input-box label="ชื่อคณะ/ภาควิชา" ng-model="data.faculty.FACULTY_PK" required="false"></input-box>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก" ng-model="MAJOR_NAME" required="false"></input-box>
+									<input-box label="ชื่อวิชาเอก" ng-model="data.MAJOR_NAME" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อวิชาเอก (En)" ng-model="MAJOR_NAME_ENG" required="false"></input-box>
+									<input-box label="ชื่อวิชาเอก (En)" ng-model="data.MAJOR_NAME_ENG" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
@@ -155,10 +155,10 @@
 									<div class="form-group">
 										<label for="choose-status">สถานะ : </label><br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary">
+											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -169,8 +169,8 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success">ค้นหาข้อมูล</button>
-										<button class="btn btn-danger">ยกเลิก</button>
+										<button class="btn btn-success" ng-click="getMajor(data)">ค้นหาข้อมูล</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
 							</div>
@@ -185,4 +185,48 @@
 		<!-- nav-tabs-custom -->
 	</div>
 	<!-- /.col -->
+</div>
+<!--table-->
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">ตารางข้อมูลคำนำหน้า</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<table ng-show="myValues.length > 0" ng-table="tableParams" class="table table-bordered  table-hover">
+					<tr ng-repeat="row in $data">
+						<td style="width: 1%;">
+							<input type="checkbox" class="custom-checkbox">
+						</td>
+						<td class="text-center" data-title="'ชื่อมหาวิทยาลัย'" sortable="'university.UNIVERSITY_NAME'">{{row.university.UNIVERSITY_NAME}}</td>
+						<td class="text-center" data-title="'ชื่อคณะ/ภาควิชา'" sortable="'faculty.FACULTY_NAME'">{{row.faculty.FACULTY_NAME}}</td>
+						<td class="text-center" data-title="'ชื่อสาขาวิชาเอก'" sortable="'MAJOR_NAME'">{{row.MAJOR_NAME}}</td>
+						<td class="text-center" data-title="'ชื่อสาขาวิชาเอก(En)'" sortable="'MAJOR_NAME_ENG'">{{row.MAJOR_NAME_ENG}}</td>
+						<td class="text-center" data-title="'สถานะ'" sortable="'ACTIVE'">{{row.ACTIVE}}</td>
+					</tr>
+				</table>
+				<table class="table table-bordered  table-hover" ng-hide="myValues.length > 0">
+					<thead>
+						<tr>
+							<th class="text-center">ชื่อมหาวิทยาลัย</th>
+							<th class="text-center">ชื่อคณะ/ภาควิชา</th>
+							<th class="text-center">ชื่อสาขาวิชาเอก</th>
+							<th class="text-center">ชื่อสาขาวิชาเอก(En)</th>
+							<th class="text-center">สถานะ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="5" class="text-center">ไม่พบข้อมูล</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
 </div>

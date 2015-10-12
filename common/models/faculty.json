@@ -1,13 +1,15 @@
 {
   "name": "Faculty",
   "base": "PersistedModel",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
     "FACULTY_PK": {
-      "type": "object"
+      "type": "object",
+      "id": true,
+      "generated": true
     }
   },
   "validations": [],

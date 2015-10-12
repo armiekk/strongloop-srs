@@ -20,7 +20,6 @@
 				</li>
 				<li class="pull-left header"><i class="fa fa-th"></i>ข้อมูลคำนำหน้า</li>
 			</ul>
-<!--			tab-->
 			<div class="tab-content">
 				<!-- แก้ไข -->
 				<div class="tab-pane" id="add">
@@ -28,28 +27,46 @@
 						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.UNIVERSITY_NAME" required="true"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="data.UNIVERSITY_NAME_ENG" required="false"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ที่อยู่" ng-model="data.UNIVERSITY_ADDRESS" required="false"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="E-mail" ng-model="data.UNIVERSITY_EMAIL" required="false"></input-box>
+									<input-box label="*ชื่อเหตุการณ์" ng-model="data.EVENT_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-status">สถานะ : </label><br>
+										<label for="choose-confirm">*ยืนยัน : </label><br>
+										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-score">*คะแนน : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+												<input type="radio" name="score" autocomplete="off"> ต้องใส่
+											</label>
+											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">*สถานะ : </label><br>
 										<div class="btn-group" data-toggle="buttons">
 											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
@@ -77,31 +94,49 @@
 				<!-- เพิ่ม -->
 				<div class="tab-pane" id="edit">
 					<div class="container-fluid">
-						<form name="search-form" novalidate>
+						<form name="search-form">
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.UNIVERSITY_NAME" required="true"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="data.UNIVERSITY_NAME_ENG" required="false"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ที่อยู่" ng-model="data.UNIVERSITY_ADDRESS" required="false"></input-box>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-3 col-md-6">
-									<input-box label="E-mail" ng-model="data.UNIVERSITY_EMAIL" required="false"></input-box>
+									<input-box label="*ชื่อเหตุการณ์" ng-model="data.EVENT_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-status">สถานะ : </label><br>
+										<label for="choose-confirm">*ยืนยัน : </label><br>
+										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-score">*คะแนน : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+												<input type="radio" name="score" autocomplete="off"> ต้องใส่
+											</label>
+											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">*สถานะ : </label><br>
 										<div class="btn-group" data-toggle="buttons">
 											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
@@ -117,7 +152,7 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success" ng-click="addUniversity()">เพิ่มข้อมูล</button>
+										<button class="btn btn-success" ng-click="addEventType(data)">เพิ่มข้อมูล</button>
 										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
@@ -132,12 +167,40 @@
 						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย" ng-model="data.UNIVERSITY_NAME" required="false"></input-box>
+									<input-box label="ชื่อเหตุการณ์" ng-model="EVENT_NAME" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อมหาวิทยาลัย (En)" ng-model="data.UNIVERSITY_NAME_ENG" required="false"></input-box>
+									<div class="form-group">
+										<label for="choose-confirm">ยืนยัน : </label><br>
+										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
+											</label>
+											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-score">คะแนน : </label><br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+												<input type="radio" name="score" autocomplete="off"> ต้องใส่
+											</label>
+											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
+											</label>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -159,7 +222,7 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success" ng-click="getUniversity()">ค้นหาข้อมูล</button>
+										<button class="btn btn-success" ng-click="getEventType(data)">ค้นหาข้อมูล</button>
 										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
@@ -176,14 +239,13 @@
 	</div>
 	<!-- /.col -->
 </div>
-
 <!--table-->
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">ตารางข้อมูลคำนำหน้า</h3>
+				<h3 class="box-title">ตารางข้อมูลกิจกรรม</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -192,20 +254,18 @@
 						<td style="width: 1%;">
 							<input type="checkbox" class="custom-checkbox">
 						</td>
-						<td class="text-center" data-title="'ชื่อมหาวิทยาลัย'" sortable="'UNIVERSITY_NAME'">{{row.UNIVERSITY_NAME}}</td>
-						<td class="text-center" data-title="'ชื่อมหาวิทยาลัย(En)'" sortable="'UNIVERSITY_NAME_ENG'">{{row.UNIVERSITY_NAME_ENG}}</td>
-						<td class="text-center" data-title="'ที่อยู่'" sortable="'UNIVERSITY_ADDRESS'">{{row.UNIVERSITY_ADDRESS}}</td>
-						<td class="text-center" data-title="'E-Mail'" sortable="'UNIVERSITY_EMAIL'">{{row.UNIVERSITY_EMAIL}}</td>
+						<td class="text-center" data-title="'ชื่อเหตุการณ์'" sortable="'EVENT_TYPE_NAME'">{{row.EVENT_TYPE_NAME}}</td>
+						<td class="text-center" data-title="'ยืนยัน'" sortable="'CONFIRM'">{{row.CONFIRM}}</td>
+						<td class="text-center" data-title="'คะแนน'" sortable="'SCORE'">{{row.SCORE}}</td>
 						<td class="text-center" data-title="'สถานะ'" sortable="'ACTIVE'">{{row.ACTIVE}}</td>
 					</tr>
 				</table>
 				<table class="table table-bordered  table-hover" ng-hide="myValues.length > 0">
 					<thead>
 						<tr>
-							<th class="text-center">ชื่อมหาวิทยาลัย</th>
-							<th class="text-center">ชื่อมหาวิทยาลัย(En)</th>
-							<th class="text-center">ที่อยู่</th>
-							<th class="text-center">E-Mail</th>
+							<th class="text-center">ชื่อเหตุการณ์</th>
+							<th class="text-center">ยืนยัน</th>
+							<th class="text-center">คะแนน</th>
 							<th class="text-center">สถานะ</th>
 						</tr>
 					</thead>
@@ -221,4 +281,6 @@
 		<!-- /.box -->
 	</div>
 </div>
+
+
 

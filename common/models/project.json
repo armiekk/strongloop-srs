@@ -1,0 +1,54 @@
+{
+  "name": "Project",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "PROJECT_PK": {
+      "type": "object",
+      "id": true,
+      "generated": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "questionTypes": {
+      "type": "hasMany",
+      "model": "QuestionType",
+      "foreignKey": "PROJECT_PK"
+    },
+    "scoreTypes": {
+      "type": "hasMany",
+      "model": "ScoreType",
+      "foreignKey": "PROJECT_PK"
+    },
+    "eventTypes": {
+      "type": "hasMany",
+      "model": "EventType",
+      "foreignKey": "PROJECT_PK"
+    }
+  },
+  "acls": [
+		{
+			"accessType": "*",
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "DENY"
+    },
+		{
+			"accessType": "READ",
+			"principalType": "ROLE",
+			"principalId": "$everyone",
+			"permission": "ALLOW"
+    },
+		{
+			"accessType": "WRITE",
+			"principalType": "ROLE",
+			"principalId": "Administrator",
+			"permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

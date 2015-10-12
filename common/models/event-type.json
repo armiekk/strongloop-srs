@@ -1,12 +1,12 @@
 {
-	"name": "ScoreType",
+	"name": "EventType",
 	"base": "PersistedModel",
 	"idInjection": false,
 	"options": {
 		"validateUpsert": true
 	},
 	"properties": {
-		"SCORETYPE_PK": {
+		"EVENT_TYPE_PK": {
 			"type": "object",
 			"id": true,
 			"generated": true

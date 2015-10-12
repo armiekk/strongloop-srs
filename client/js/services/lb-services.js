@@ -10715,6 +10715,12 @@ module.factory(
       { 'id': '@id' },
       {
 
+        // INTERNAL. Use ScoreType.project() instead.
+        "prototype$__get__project": {
+          url: urlBase + "/ScoreTypes/:id/project",
+          method: "GET"
+        },
+
         /**
          * @ngdoc method
          * @name lbServices.ScoreType#create
@@ -11133,6 +11139,65 @@ module.factory(
           url: urlBase + "/ScoreTypes/change-stream",
           method: "POST"
         },
+
+        // INTERNAL. Use Project.scoreTypes.findById() instead.
+        "::findById::Project::scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.destroyById() instead.
+        "::destroyById::Project::scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.updateById() instead.
+        "::updateById::Project::scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.scoreTypes() instead.
+        "::get::Project::scoreTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.create() instead.
+        "::create::Project::scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.createMany() instead.
+        "::createMany::Project::scoreTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.destroyAll() instead.
+        "::delete::Project::scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.count() instead.
+        "::count::Project::scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes/count",
+          method: "GET"
+        },
       }
     );
 
@@ -11270,18 +11335,54 @@ module.factory(
     R.modelName = "ScoreType";
 
 
+        /**
+         * @ngdoc method
+         * @name lbServices.ScoreType#project
+         * @methodOf lbServices.ScoreType
+         *
+         * @description
+         *
+         * Fetches belongsTo relation project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        R.project = function() {
+          var TargetResource = $injector.get("Project");
+          var action = TargetResource["::get::ScoreType::project"];
+          return action.apply(R, arguments);
+        };
+
     return R;
   }]);
 
 /**
  * @ngdoc object
- * @name lbServices.Event
- * @header lbServices.Event
+ * @name lbServices.EventType
+ * @header lbServices.EventType
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Event` model.
+ * A $resource object for interacting with the `EventType` model.
  *
  * ## Example
  *
@@ -11291,17 +11392,23 @@ module.factory(
  *
  */
 module.factory(
-  "Event",
+  "EventType",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/Events/:id",
+      urlBase + "/EventTypes/:id",
       { 'id': '@id' },
       {
 
+        // INTERNAL. Use EventType.project() instead.
+        "prototype$__get__project": {
+          url: urlBase + "/EventTypes/:id/project",
+          method: "GET"
+        },
+
         /**
          * @ngdoc method
-         * @name lbServices.Event#create
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#create
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11328,18 +11435,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/Events",
+          url: urlBase + "/EventTypes",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#createMany
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#createMany
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11366,19 +11473,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/Events",
+          url: urlBase + "/EventTypes",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#upsert
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#upsert
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11405,18 +11512,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Events",
+          url: urlBase + "/EventTypes",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#exists
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#exists
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11441,14 +11548,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/Events/:id/exists",
+          url: urlBase + "/EventTypes/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#findById
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#findById
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11472,18 +11579,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/Events/:id",
+          url: urlBase + "/EventTypes/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#find
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#find
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11505,19 +11612,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/Events",
+          url: urlBase + "/EventTypes",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#findOne
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#findOne
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11539,18 +11646,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Events/findOne",
+          url: urlBase + "/EventTypes/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#updateAll
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#updateAll
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11577,14 +11684,14 @@ module.factory(
          * This method returns no data.
          */
         "updateAll": {
-          url: urlBase + "/Events/update",
+          url: urlBase + "/EventTypes/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#deleteById
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#deleteById
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11607,14 +11714,14 @@ module.factory(
          * This method returns no data.
          */
         "deleteById": {
-          url: urlBase + "/Events/:id",
+          url: urlBase + "/EventTypes/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#count
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#count
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11639,14 +11746,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/Events/count",
+          url: urlBase + "/EventTypes/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#prototype$updateAttributes
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#prototype$updateAttributes
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11672,18 +11779,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Events/:id",
+          url: urlBase + "/EventTypes/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#createChangeStream
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#createChangeStream
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11713,8 +11820,67 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/Events/change-stream",
+          url: urlBase + "/EventTypes/change-stream",
           method: "POST"
+        },
+
+        // INTERNAL. Use Project.eventTypes.findById() instead.
+        "::findById::Project::eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.eventTypes.destroyById() instead.
+        "::destroyById::Project::eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.eventTypes.updateById() instead.
+        "::updateById::Project::eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.eventTypes() instead.
+        "::get::Project::eventTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.eventTypes.create() instead.
+        "::create::Project::eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.eventTypes.createMany() instead.
+        "::createMany::Project::eventTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.eventTypes.destroyAll() instead.
+        "::delete::Project::eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.eventTypes.count() instead.
+        "::count::Project::eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes/count",
+          method: "GET"
         },
       }
     );
@@ -11723,8 +11889,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#updateOrCreate
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#updateOrCreate
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11751,15 +11917,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Event` object.)
+         * This usually means the response is a `EventType` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#update
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#update
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11789,8 +11955,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#destroyById
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#destroyById
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11816,8 +11982,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Event#removeById
-         * @methodOf lbServices.Event
+         * @name lbServices.EventType#removeById
+         * @methodOf lbServices.EventType
          *
          * @description
          *
@@ -11844,14 +12010,2394 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.Event#modelName
-    * @propertyOf lbServices.Event
+    * @name lbServices.EventType#modelName
+    * @propertyOf lbServices.EventType
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Event`.
+    * i.e. `EventType`.
     */
-    R.modelName = "Event";
+    R.modelName = "EventType";
 
+
+        /**
+         * @ngdoc method
+         * @name lbServices.EventType#project
+         * @methodOf lbServices.EventType
+         *
+         * @description
+         *
+         * Fetches belongsTo relation project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        R.project = function() {
+          var TargetResource = $injector.get("Project");
+          var action = TargetResource["::get::EventType::project"];
+          return action.apply(R, arguments);
+        };
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.QuestionType
+ * @header lbServices.QuestionType
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `QuestionType` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "QuestionType",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/QuestionTypes/:id",
+      { 'id': '@id' },
+      {
+
+        // INTERNAL. Use QuestionType.project() instead.
+        "prototype$__get__project": {
+          url: urlBase + "/QuestionTypes/:id/project",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#create
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/QuestionTypes",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#createMany
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/QuestionTypes",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#upsert
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/QuestionTypes",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#exists
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/QuestionTypes/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#findById
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/QuestionTypes/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#find
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/QuestionTypes",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#findOne
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/QuestionTypes/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#updateAll
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "updateAll": {
+          url: urlBase + "/QuestionTypes/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#deleteById
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "deleteById": {
+          url: urlBase + "/QuestionTypes/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#count
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/QuestionTypes/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#prototype$updateAttributes
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/QuestionTypes/:id",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#createChangeStream
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/QuestionTypes/change-stream",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.questionTypes.findById() instead.
+        "::findById::Project::questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.questionTypes.destroyById() instead.
+        "::destroyById::Project::questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.questionTypes.updateById() instead.
+        "::updateById::Project::questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.questionTypes() instead.
+        "::get::Project::questionTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.questionTypes.create() instead.
+        "::create::Project::questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.questionTypes.createMany() instead.
+        "::createMany::Project::questionTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.questionTypes.destroyAll() instead.
+        "::delete::Project::questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.questionTypes.count() instead.
+        "::count::Project::questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes/count",
+          method: "GET"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#updateOrCreate
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#update
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#destroyById
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#removeById
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.QuestionType#modelName
+    * @propertyOf lbServices.QuestionType
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `QuestionType`.
+    */
+    R.modelName = "QuestionType";
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.QuestionType#project
+         * @methodOf lbServices.QuestionType
+         *
+         * @description
+         *
+         * Fetches belongsTo relation project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `refresh` – `{boolean=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        R.project = function() {
+          var TargetResource = $injector.get("Project");
+          var action = TargetResource["::get::QuestionType::project"];
+          return action.apply(R, arguments);
+        };
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Project
+ * @header lbServices.Project
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Project` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Project",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/Projects/:id",
+      { 'id': '@id' },
+      {
+
+        // INTERNAL. Use Project.questionTypes.findById() instead.
+        "prototype$__findById__questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.questionTypes.destroyById() instead.
+        "prototype$__destroyById__questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.questionTypes.updateById() instead.
+        "prototype$__updateById__questionTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/questionTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.findById() instead.
+        "prototype$__findById__scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.destroyById() instead.
+        "prototype$__destroyById__scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.updateById() instead.
+        "prototype$__updateById__scoreTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/scoreTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.eventTypes.findById() instead.
+        "prototype$__findById__eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.eventTypes.destroyById() instead.
+        "prototype$__destroyById__eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.eventTypes.updateById() instead.
+        "prototype$__updateById__eventTypes": {
+          params: {
+          'fk': '@fk'
+          },
+          url: urlBase + "/Projects/:id/eventTypes/:fk",
+          method: "PUT"
+        },
+
+        // INTERNAL. Use Project.questionTypes() instead.
+        "prototype$__get__questionTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.questionTypes.create() instead.
+        "prototype$__create__questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.questionTypes.destroyAll() instead.
+        "prototype$__delete__questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.questionTypes.count() instead.
+        "prototype$__count__questionTypes": {
+          url: urlBase + "/Projects/:id/questionTypes/count",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.scoreTypes() instead.
+        "prototype$__get__scoreTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.create() instead.
+        "prototype$__create__scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.destroyAll() instead.
+        "prototype$__delete__scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.scoreTypes.count() instead.
+        "prototype$__count__scoreTypes": {
+          url: urlBase + "/Projects/:id/scoreTypes/count",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.eventTypes() instead.
+        "prototype$__get__eventTypes": {
+          isArray: true,
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Project.eventTypes.create() instead.
+        "prototype$__create__eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Project.eventTypes.destroyAll() instead.
+        "prototype$__delete__eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes",
+          method: "DELETE"
+        },
+
+        // INTERNAL. Use Project.eventTypes.count() instead.
+        "prototype$__count__eventTypes": {
+          url: urlBase + "/Projects/:id/eventTypes/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#create
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/Projects",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#createMany
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/Projects",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#upsert
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/Projects",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#exists
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/Projects/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#findById
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/Projects/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#find
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/Projects",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#findOne
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/Projects/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#updateAll
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "updateAll": {
+          url: urlBase + "/Projects/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#deleteById
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        "deleteById": {
+          url: urlBase + "/Projects/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#count
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/Projects/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#prototype$updateAttributes
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/Projects/:id",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#createChangeStream
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/Projects/change-stream",
+          method: "POST"
+        },
+
+        // INTERNAL. Use ScoreType.project() instead.
+        "::get::ScoreType::project": {
+          url: urlBase + "/ScoreTypes/:id/project",
+          method: "GET"
+        },
+
+        // INTERNAL. Use EventType.project() instead.
+        "::get::EventType::project": {
+          url: urlBase + "/EventTypes/:id/project",
+          method: "GET"
+        },
+
+        // INTERNAL. Use QuestionType.project() instead.
+        "::get::QuestionType::project": {
+          url: urlBase + "/QuestionTypes/:id/project",
+          method: "GET"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#updateOrCreate
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Project` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#update
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#destroyById
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#removeById
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.Project#modelName
+    * @propertyOf lbServices.Project
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Project`.
+    */
+    R.modelName = "Project";
+
+    /**
+     * @ngdoc object
+     * @name lbServices.Project.questionTypes
+     * @header lbServices.Project.questionTypes
+     * @object
+     * @description
+     *
+     * The object `Project.questionTypes` groups methods
+     * manipulating `QuestionType` instances related to `Project`.
+     *
+     * Call {@link lbServices.Project#questionTypes Project.questionTypes()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#questionTypes
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Queries questionTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R.questionTypes = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::get::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#count
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Counts questionTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        R.questionTypes.count = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::count::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#create
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Creates a new instance in questionTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R.questionTypes.create = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::create::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#createMany
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Creates a new instance in questionTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R.questionTypes.createMany = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::createMany::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#destroyAll
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Deletes all questionTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.questionTypes.destroyAll = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::delete::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#destroyById
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Delete a related item by id for questionTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for questionTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.questionTypes.destroyById = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::destroyById::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#findById
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Find a related item by id for questionTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for questionTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R.questionTypes.findById = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::findById::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.questionTypes#updateById
+         * @methodOf lbServices.Project.questionTypes
+         *
+         * @description
+         *
+         * Update a related item by id for questionTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for questionTypes
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `QuestionType` object.)
+         * </em>
+         */
+        R.questionTypes.updateById = function() {
+          var TargetResource = $injector.get("QuestionType");
+          var action = TargetResource["::updateById::Project::questionTypes"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Project.scoreTypes
+     * @header lbServices.Project.scoreTypes
+     * @object
+     * @description
+     *
+     * The object `Project.scoreTypes` groups methods
+     * manipulating `ScoreType` instances related to `Project`.
+     *
+     * Call {@link lbServices.Project#scoreTypes Project.scoreTypes()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#scoreTypes
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Queries scoreTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ScoreType` object.)
+         * </em>
+         */
+        R.scoreTypes = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::get::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#count
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Counts scoreTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        R.scoreTypes.count = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::count::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#create
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Creates a new instance in scoreTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ScoreType` object.)
+         * </em>
+         */
+        R.scoreTypes.create = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::create::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#createMany
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Creates a new instance in scoreTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ScoreType` object.)
+         * </em>
+         */
+        R.scoreTypes.createMany = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::createMany::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#destroyAll
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Deletes all scoreTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.scoreTypes.destroyAll = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::delete::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#destroyById
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Delete a related item by id for scoreTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for scoreTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.scoreTypes.destroyById = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::destroyById::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#findById
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Find a related item by id for scoreTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for scoreTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ScoreType` object.)
+         * </em>
+         */
+        R.scoreTypes.findById = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::findById::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.scoreTypes#updateById
+         * @methodOf lbServices.Project.scoreTypes
+         *
+         * @description
+         *
+         * Update a related item by id for scoreTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for scoreTypes
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `ScoreType` object.)
+         * </em>
+         */
+        R.scoreTypes.updateById = function() {
+          var TargetResource = $injector.get("ScoreType");
+          var action = TargetResource["::updateById::Project::scoreTypes"];
+          return action.apply(R, arguments);
+        };
+    /**
+     * @ngdoc object
+     * @name lbServices.Project.eventTypes
+     * @header lbServices.Project.eventTypes
+     * @object
+     * @description
+     *
+     * The object `Project.eventTypes` groups methods
+     * manipulating `EventType` instances related to `Project`.
+     *
+     * Call {@link lbServices.Project#eventTypes Project.eventTypes()}
+     * to query all related instances.
+     */
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project#eventTypes
+         * @methodOf lbServices.Project
+         *
+         * @description
+         *
+         * Queries eventTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `filter` – `{object=}` - 
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `EventType` object.)
+         * </em>
+         */
+        R.eventTypes = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::get::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#count
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Counts eventTypes of Project.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        R.eventTypes.count = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::count::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#create
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Creates a new instance in eventTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `EventType` object.)
+         * </em>
+         */
+        R.eventTypes.create = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::create::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#createMany
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Creates a new instance in eventTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `EventType` object.)
+         * </em>
+         */
+        R.eventTypes.createMany = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::createMany::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#destroyAll
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Deletes all eventTypes of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.eventTypes.destroyAll = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::delete::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#destroyById
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Delete a related item by id for eventTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for eventTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * This method returns no data.
+         */
+        R.eventTypes.destroyById = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::destroyById::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#findById
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Find a related item by id for eventTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for eventTypes
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `EventType` object.)
+         * </em>
+         */
+        R.eventTypes.findById = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::findById::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Project.eventTypes#updateById
+         * @methodOf lbServices.Project.eventTypes
+         *
+         * @description
+         *
+         * Update a related item by id for eventTypes.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         *  - `fk` – `{*}` - Foreign key for eventTypes
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `EventType` object.)
+         * </em>
+         */
+        R.eventTypes.updateById = function() {
+          var TargetResource = $injector.get("EventType");
+          var action = TargetResource["::updateById::Project::eventTypes"];
+          return action.apply(R, arguments);
+        };
 
     return R;
   }]);

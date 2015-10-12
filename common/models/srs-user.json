@@ -1,13 +1,13 @@
 {
-	"name": "SrsUser",
-	"base": "User",
-	"idInjection": false,
-	"options": {
-		"validateUpsert": true
-	},
-	"properties": {},
-	"validations": [],
-	"relations": {},
-	"acls": [],
-	"methods": {}
+  "name": "SrsUser",
+  "base": "User",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
 }

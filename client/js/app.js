@@ -1,8 +1,7 @@
 (function () {
 	'use_strict';
 
-	angular.module('app', 
-						['lbServices', 'ui.router', 'ngRoute', 'ngStorage', 'checklist-model', 'ngTable'])
+	angular.module('app', ['lbServices', 'ui.router', 'ngRoute', 'ngStorage', 'checklist-model', 'ngTable'])
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 			$urlRouterProvider.otherwise("/index");
 
@@ -53,23 +52,33 @@
 				})
 				.state('dashboard.university', {
 					url: '/table/university',
-					templateUrl: '../views/tableId/university.html'
+					templateUrl: '../views/tableId/university.html',
+					controller: 'universityController'
 				})
 				.state('dashboard.faculty', {
 					url: '/table/faculty',
-					templateUrl: '../views/tableId/faculty.html'
+					templateUrl: '../views/tableId/faculty.html',
+					controller: 'facultyController'
 				})
 				.state('dashboard.major', {
 					url: '/table/major',
-					templateUrl: '../views/tableId/major.html'
+					templateUrl: '../views/tableId/major.html',
+					controller: 'majorController'
 				})
-				.state('dashboard.score', {
-					url: '/table/score',
-					templateUrl: '../views/tableId/score.html'
+				.state('dashboard.scoreType', {
+					url: '/table/scoreType',
+					templateUrl: '../views/tableId/scoreType.html',
+					controller: 'scoreTypeController'
 				})
-				.state('dashboard.event', {
-					url: '/table/event',
-					templateUrl: '../views/tableId/event.html'
+				.state('dashboard.eventType', {
+					url: '/table/eventType',
+					templateUrl: '../views/tableId/eventType.html',
+					controller: 'eventTypeController'
+				})
+				.state('dashboard.questionType', {
+					url: '/table/questionType',
+					templateUrl: '../views/tableId/questionType.html',
+					controller: 'questionTypeController'
 				});
 			$locationProvider.html5Mode(true);
 
@@ -84,7 +93,7 @@
 								email: value.email,
 								admin: value.admin
 							};
-							if(next.url === '/signin'){
+							if (next.url === '/signin') {
 								$state.go('dashboard');
 							}
 							$log.info(value);
@@ -96,8 +105,6 @@
 							}
 						});
 					// redirect to login page if not logged in
-
-
 				});
   }]);
 })();

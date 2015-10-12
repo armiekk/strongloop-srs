@@ -23,7 +23,7 @@ module.exports = function (app) {
 					role.principals.create(
 						{
 							principalType: RoleMapping.USER,
-							principalId: users.USER_ID
+							principalId: users.id
 						},
 						function(err, principal){
 							if(err) throw err;

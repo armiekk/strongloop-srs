@@ -23,7 +23,8 @@
 						.logout()
 						.$promise
 						.then(function (err) {
-							delete $localStorage.token;
+							$log.info('Log out');
+							$rootScope.credentials = undefined;
 						});
 				}
 
