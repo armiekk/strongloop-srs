@@ -1,7 +1,7 @@
 (function () {
 	'use_strict';
 
-	angular.module('app', ['lbServices', 'ui.router', 'ngRoute', 'ngStorage', 'checklist-model', 'ngTable'])
+	angular.module('app', ['lbServices', 'ui.router', 'ngRoute', 'ngStorage', 'checklist-model', 'ngTable', 'ui.grid', 'ui.grid.pagination', 'ui.grid.selection', 'ui.grid.edit'])
 		.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 			$urlRouterProvider.otherwise("/index");
 
@@ -26,6 +26,11 @@
 				.state('dashboard', {
 					url: '/dashboard',
 					templateUrl: '../views/dashboard.html',
+					authenticate: true
+				})
+				.state('user-dashboard', {
+					url: '/dashboard/user',
+					templateUrl: '../views/user-dashboard.html',
 					authenticate: true
 				})
 				.state('signup-user', {
@@ -79,12 +84,17 @@
 					url: '/table/questionType',
 					templateUrl: '../views/tableId/questionType.html',
 					controller: 'questionTypeController'
+				})
+				.state('dashboard.createProject', {
+					url: '/administration/createProject',
+					templateUrl: '../views/administration/createProject.html',
+					controller: 'projectController'
 				});
 			$locationProvider.html5Mode(true);
 
 		})
-		.run(['$rootScope', '$state', '$localStorage', '$log', 'AuthService',
-			function ($rootScope, $state, $localStorage, $log, AuthService) {
+		.run(['$rootScope', '$state', '$location', '$log', 'AuthService',
+			function ($rootScope, $state, $location, $log, AuthService) {
 				$rootScope.$on('$stateChangeStart', function (event, next) {
 					AuthService
 						.getCurrentUser()
@@ -94,11 +104,13 @@
 								admin: value.admin
 							};
 							if (next.url === '/signin') {
-								$state.go('dashboard');
+								if (value.admin) {
+									$state.go('dashboard');
+								} else {
+									$state.go('user-dashboard');
+								}
 							}
-							$log.info(value);
 						}, function (error) {
-							$log.info(error);
 							if (next.authenticate) {
 								event.preventDefault(); //prevent current page from loading
 								$state.go('forbidden');

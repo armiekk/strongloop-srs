@@ -12,7 +12,11 @@
 							email: response.user.email,
 							admin: response.user.admin,
 						};
-						$state.go('dashboard');
+						if(response.user.admin){
+							$state.go('dashboard');
+						}else{
+							$state.go('user-dashboard');
+						}
 					}, function (err) {
 						$log.info(err);
 						$state.go('signin-fail');
@@ -24,8 +28,7 @@
 				$scope.logout = function () {
 					AuthService.logout()
 						.then(function (value, resHeader) {
-							$log.info(value);
-							$location.path('/index');
+							$state.go('index');
 						});
 				};
 		}])

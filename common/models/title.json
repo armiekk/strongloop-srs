@@ -12,7 +12,7 @@
   },
   "properties": {
     "TITLE_PK": {
-      "type": "object",
+      "type": "string",
       "id": true,
       "generated": true
     }

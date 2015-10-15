@@ -1,16 +1,264 @@
 module.exports = function (app) {
+
+	// gen title >> เพิ่มคำนำหน้าชื่อ
 	app.dataSources.mongoDB.automigrate('Title', function (err) {
 		if (err) throw err;
-		
+
 		app.models.Title.create(
-			[
-				{ TITLE_NAME: 'นาย',TITLE_NAME_ENG: 'MR.' , TITLE_SEX: 'ชาย'},
-				{ TITLE_NAME: 'นางสาว',TITLE_NAME_ENG: 'MRS.' , TITLE_SEX: 'หญิง'}
-			], 
-			function(err, title){
-				if(err) console.log(err);
-				
+				[
+				{
+					TITLE_CODE: '01',
+					TITLE_NAME: 'นาย',
+					TITLE_NAME_ENG: 'MR.',
+					TITLE_SEX: 'ชาย'
+				},
+				{
+					TITLE_CODE: '02',
+					TITLE_NAME: 'นางสาว',
+					TITLE_NAME_ENG: 'MRS.',
+					TITLE_SEX: 'หญิง'
+				}
+				],
+			function (err, title) {
+				if (err) console.log(err);
+
 				console.log('create title', title);
+			});
+	});
+	
+
+	// gen university faculty and major >>> เพิ่มมหาลัย คณะ และ ภาควิชา
+	app.dataSources.mongoDB.automigrate('University', function (err) {
+		if (err) throw err;
+
+		app.models.University.create(
+			[
+				{
+					UNIVERSITY_NAME: 'สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง',
+					UNIVERSITY_NAME_ENG: 'King Mongkut\'s institue of Technology Ladkrabang',
+					UNIVERSITY_ADDRESS: 'เขตลาดกระบัง จังหวัดกรุงเทพฯ',
+					UNIVERSITY_EMAIL: 'info@kmitl.ac.th',
+					ACTIVE: 1
+				},
+				{
+					UNIVERSITY_NAME: 'มหาวิทยาลัยเกษตรศาสตร์ วิทยาเขตศรีราชา',
+					UNIVERSITY_NAME_ENG: 'Kasetsart University',
+					UNIVERSITY_ADDRESS: 'อำเภอศรีราชา จังหวัดชลบุรี',
+					UNIVERSITY_EMAIL: 'info@ku.ac.th',
+					ACTIVE: 1
+				}
+			],
+			function (err, university) {
+				if (err) console.log(err);
+
+				console.log('create university', university);
+				app.models.Faculty.create(
+					[
+						{
+							FACULTY_NAME: 'วิทยาศาสตร์',
+							FACULTY_NAME_ENG: 'Faculty of Science',
+							UNIVERSITY_PK: university[0].UNIVERSITY_PK,
+							ACTIVE: 1
+						},
+						{
+							FACULTY_NAME: 'วิทยาศาสตร์',
+							FACULTY_NAME_ENG: 'Faculty of Science',
+							UNIVERSITY_PK: university[1].UNIVERSITY_PK,
+							ACTIVE: 1
+						}
+					],
+					function (err, faculty) {
+						if (err) console.log(err);
+
+						console.log('create faculty', faculty);
+						app.models.Major.create(
+							[
+								{
+									MAJOR_NAME: 'วิทยาการคอมพิวเตอร์',
+									MAJOR_NAME_ENG: 'Computer Science',
+									UNIVERSITY_PK: university[0].UNIVERSITY_PK,
+									FACULTY_PK: faculty[0].FACULTY_PK,
+									ACTIVE: 1
+								},
+								{
+									MAJOR_NAME: 'วิทยาการคอมพิวเตอร์',
+									MAJOR_NAME_ENG: 'Computer Science',
+									UNIVERSITY_PK: university[1].UNIVERSITY_PK,
+									FACULTY_PK: faculty[1].FACULTY_PK,
+									ACTIVE: 1
+								}
+							],
+							function (err, major) {
+								if (err) console.log(err);
+
+								console.log('create major', major);
+							});
+					});
+			});
+	}); 
+
+		app.dataSources.mongoDB.automigrate('QuestionType', function (err) {
+			if (err) throw err;
+	
+			app.models.QuestionType.create(
+				[
+					{
+						QUESTION_TYPE_NAME: 'จริงหรือเท็จ',
+						ACTIVE: 1
+					},
+					{
+						QUESTION_TYPE_NAME: 'ข้อความ',
+						ACTIVE: 1
+					},
+					{
+						QUESTION_TYPE_NAME: 'วันที่',
+						ACTIVE: 1
+					},
+					{
+						QUESTION_TYPE_NAME: 'ช่วงวันที่',
+						ACTIVE: 1
+					}
+				],
+				function (err, questionType) {
+					if (err) console.log(err);
+	
+					console.log('create questionType', questionType);
+				});
+		});
+		app.dataSources.mongoDB.automigrate('ScoreType', function (err) {
+			if (err) throw err;
+	
+			app.models.ScoreType.create(
+				[
+					{
+						SCORE_TYPE_NAME: 'Score',
+						ACTIVE: 1
+					},
+					{
+						SCORE_TYPE_NAME: 'Grade',
+						ACTIVE: 1
+					},
+					{
+						SCORE_TYPE_NAME: 'Pass/NotPass',
+						ACTIVE: 1
+					}
+				],
+				function (err, scoreType) {
+					if (err) console.log(err);
+	
+					console.log('create scoreType', scoreType);
+				});
+		});
+		app.dataSources.mongoDB.automigrate('EventType', function (err) {
+			if (err) throw err;
+	
+			app.models.EventType.create(
+				[
+					{
+						EVENT_TYPE_NAME: 'Score',
+						CONFIRM: 2,
+						SCORE: 1,
+						ACTIVE: 1
+					},
+					{
+						EVENT_TYPE_NAME: 'Grade',
+						CONFIRM: 2,
+						SCORE: 1,
+						ACTIVE: 1
+					},
+					{
+						EVENT_TYPE_NAME: 'Pass/NotPass',
+						CONFIRM: 2,
+						SCORE: 1,
+						ACTIVE: 1
+					}
+				],
+				function (err, eventType) {
+					if (err) console.log(err);
+	
+					console.log('create eventType', eventType);
+				});
+		});
+
+	app.dataSources.mongoDB.automigrate('Project', function (err) {
+		if (err) throw err;
+
+		app.models.Project.create(
+			[
+				{
+					PROJECT_NAME: 'โครงการนักพัฒนาโปรแกรมมืออาชีพ ครั้งที่ 4',
+					PROJECT_YEAR: '2558',
+					PROJECT_START_DATE: '02/02/2558',
+					PROJECT_END_DATE: '31/05/2558',
+					ACTIVE: 1
+				}
+			],
+			function (err, project) {
+				if (err) console.log(err);
+				
+				console.log('create project', project);
+				// create events
+				app.models.Event.create(
+					[
+						{
+							PROJECT_PK: project[0].PROJECT_PK,
+							EVENT_TYPE_PK: '561c6cb52b8553b00d715d14',
+							EVENT_NAME: 'overview',
+							EVENT_DETAIL: 'Open house รอบที่ 1 วันที่ 28/03/2558',
+							EVENT_START_DATE: '05/01/2558',
+							EVENT_END_DATE: '25/03/2558',
+							MAX_SEAT: 100,
+							CURRENT_SEAT: 55
+						},
+						{
+							PROJECT_PK: project[0].PROJECT_PK,
+							EVENT_TYPE_PK: '561c6cb52b8553b00d715d14',
+							EVENT_NAME: 'overview',
+							EVENT_DETAIL: 'Open house รอบที่ 1 วันที่ 28/03/2558',
+							EVENT_START_DATE: '05/01/2558',
+							EVENT_END_DATE: '01/04/2558',
+							MAX_SEAT: 100,
+							CURRENT_SEAT: 43
+						}
+					],
+					function (err, event) {
+						if (err) console.log(err);
+
+						console.log('create event', event);
+					});
+				//create grading criteria
+				app.models.GradingCriteria.create(
+					[
+						{
+							PROJECT_PK: project[0].PROJECT_PK,
+							EVENT_TYPE_PK: '561c6cb52b8553b00d715d14',
+							SCORE_TYPE_PK: '561c6cb52b8553b00d715d17'
+						}
+					],
+					function (err, grading) {
+						if (err) console.log(err);
+
+						console.log('create grading', grading);
+					});
+				//create question
+				app.models.Question.create(
+					[
+						{
+							PROJECT_PK: project[0].PROJECT_PK,
+							QUESTION_TYPE_PK: '561c6cb52b8553b00d715d1a',
+							QUESTION_DETAIL: 'ท่านได้เข้าร่วมโครงการสหกิจศึกษาของทางมหาวิทยาลัยหรือไม่'
+						},
+						{
+							PROJECT_PK: project[0].PROJECT_PK,
+							QUESTION_TYPE_PK: '561c6cb52b8553b00d715d1d',
+							QUESTION_DETAIL: 'ช่วงระยะเวลาของโครงการสหกิจศึกษา'
+						}
+					],
+					function (err, grading) {
+						if (err) console.log(err);
+
+						console.log('create grading', grading);
+					});
 			});
 	});
 };

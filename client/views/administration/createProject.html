@@ -1,0 +1,179 @@
+<div class="row">
+	<div class="col-md-12">
+		<!-- Custom Tabs (Pulled to the right) -->
+		<div class="nav-tabs-custom">
+			<ul class="nav nav-tabs pull-right">
+				<li ng-class=" data.state === 'EDIT' ? 'active' : ''">
+					<a href="" ng-click="changeState('EDIT', $event)" data-toggle="tab">
+						<i class="fa fa-pencil"></i>&nbsp;แก้ไขข้อมูล
+					</a>
+				</li>
+				<li ng-class=" data.state === 'ADD' ? 'active' : ''">
+					<a href="" ng-click="changeState('ADD', $event)" data-toggle="tab">
+						<i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูล
+					</a>
+				</li>
+				<li ng-class=" data.state === 'SEARCH' ? 'active' : ''">
+					<a href="" ng-click="changeState('SEARCH', $event)" data-toggle="tab">
+						<i class="fa fa-search"></i>&nbsp;ค้นหา
+					</a>
+				</li>
+				<li class="pull-left header"><i class="fa fa-th"></i>ข้อมูลคำนำหน้า</li>
+			</ul>
+			<div class="tab-content">
+				<!-- เพิ่ม -->
+				<div ng-class=" data.state === 'ADD' ? 'tab-pane active' : 'tab-pane'" id="add">
+					<div class="container-fluid">
+						<form name="add-form" novalidate>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-2">
+									<input-box label="ปี" ng-model="data.project.PROJECT_YEAR" required="false"></input-box>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อโครงการ" ng-model="data.project.PROJECT_NAME" required="false"></input-box>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-3">
+									<input-box label="วันที่เริ่มต้น" ng-model="data.project.PROJECT_START_DATE" required="false"></input-box>
+								</div>
+								<div class="col-md-3">
+									<input-box label="วันที่สิ้นสุด" ng-model="data.project.PROJECT_END_DATE" required="false"></input-box>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">สถานะ : </label>
+										<br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary" ng-click="data.project.ACTIVE = 1">
+												<input type="radio" name="status" autocomplete="off"> ใช้งาน
+											</label>
+											<label class="btn btn-primary" ng-click="data.project.ACTIVE = 0">
+												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success" ng-click="addProject(data.project)">เพิ่มข้อมูล</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
+									</div>
+								</div>
+							</div>
+							<br>
+						</form>
+						<br>
+					</div>
+				</div>
+				<!-- แก้ไข -->
+				<div ng-class=" data.state === 'EDIT' ? 'tab-pane active' : 'tab-pane'" id="edit">
+					<div class="container-fluid">
+						<form name="edit-form" novalidate>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-2">
+									<input-box label="ปี" ng-model="data.project.PROJECT_YEAR" required="false"></input-box>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อโครงการ" ng-model="data.project.PROJECT_NAME" required="false"></input-box>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-3">
+									<input-box label="วันที่เริ่มต้น" ng-model="data.project.PROJECT_START_DATE" required="false"></input-box>
+								</div>
+								<div class="col-md-3">
+									<input-box label="วันที่สิ้นสุด" ng-model="data.project.PROJECT_END_DATE" required="false"></input-box>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="form-group">
+										<label for="choose-status">สถานะ : </label>
+										<br>
+										<div class="btn-group" data-toggle="buttons">
+											<label class="btn btn-primary" ng-click="data.project.ACTIVE = 1">
+												<input type="radio" name="status" autocomplete="off"> ใช้งาน
+											</label>
+											<label class="btn btn-primary" ng-click="data.project.ACTIVE = 0">
+												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success">แก้ไขข้อมูล</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
+									</div>
+								</div>
+							</div>
+							<br>
+						</form>
+						<br>
+					</div>
+				</div>
+				<!-- ค้นหา -->
+				<div ng-class=" data.state === 'SEARCH' ? 'tab-pane active' : 'tab-pane'" id="search">
+					<div class="container-fluid">
+						<form name="search-form" novalidate>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-2">
+									<input-box label="ปี" ng-model="data.project.PROJECT_YEAR" required="false"></input-box>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<input-box label="ชื่อโครงการ" ng-model="data.project.PROJECT_NAME" required="false"></input-box>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-offset-3 col-md-6">
+									<div class="pull-right">
+										<button class="btn btn-success" ng-click="getProject(data.project)">ค้นหาข้อมูล</button>
+										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<br>
+					</div>
+				</div>
+				<!-- /.tab-pane -->
+			</div>
+			<!-- /.tab-content -->
+		</div>
+		<!-- nav-tabs-custom -->
+	</div>
+	<!-- /.col -->
+</div>
+<!--table-->
+<div class="row">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">ตารางข้อมูลโครงการ</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection style="width: auto;height: 200px;"></div>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>

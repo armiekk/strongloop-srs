@@ -1,44 +1,38 @@
 {
-	"name": "EventType",
-	"base": "PersistedModel",
-	"idInjection": false,
-	"options": {
-		"validateUpsert": true
-	},
-	"properties": {
-		"EVENT_TYPE_PK": {
-			"type": "object",
-			"id": true,
-			"generated": true
-		}
-	},
-	"validations": [],
-	"relations": {
-		"project": {
-			"type": "belongsTo",
-			"model": "Project",
-			"foreignKey": "PROJECT_PK"
-		}
-	},
-	"acls": [
-		{
-			"accessType": "*",
-			"principalType": "ROLE",
-			"principalId": "$everyone",
-			"permission": "DENY"
+  "name": "EventType",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "EVENT_TYPE_PK": {
+      "type": "string",
+      "id": true,
+      "generated": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     },
-		{
-			"accessType": "READ",
-			"principalType": "ROLE",
-			"principalId": "$everyone",
-			"permission": "ALLOW"
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
     },
-		{
-			"accessType": "WRITE",
-			"principalType": "ROLE",
-			"principalId": "Administrator",
-			"permission": "ALLOW"
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "Administrator",
+      "permission": "ALLOW"
     }
   ],
-	"methods": {}
+  "methods": {}
 }

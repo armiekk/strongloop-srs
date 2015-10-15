@@ -7,7 +7,7 @@
   },
   "properties": {
     "FACULTY_PK": {
-      "type": "object",
+      "type": "string",
       "id": true,
       "generated": true
     }

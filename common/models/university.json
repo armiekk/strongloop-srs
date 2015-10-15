@@ -7,7 +7,7 @@
   },
   "properties": {
     "UNIVERSITY_PK": {
-      "type": "object",
+      "type": "string",
       "id": true,
       "generated": true
     }

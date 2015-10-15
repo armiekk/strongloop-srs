@@ -6,7 +6,7 @@ module.exports = function (app) {
 	User.create({
 			admin: true,
 			email: 'nongarmza@gmail.com',
-			password: 'admin',
+			password: 'armsozk38',
 			emailVerified : true
 		},
 		function (err, users) {

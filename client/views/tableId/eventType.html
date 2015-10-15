@@ -3,45 +3,46 @@
 		<!-- Custom Tabs (Pulled to the right) -->
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs pull-right">
-				<li>
-					<a href="#add" data-toggle="tab" ng-click="resetData()">
+				<li ng-class=" data.state === 'EDIT' ? 'active' : ''">
+					<a href="" data-toggle="tab" ng-click="changeState('EDIT', $event)">
 						<i class="fa fa-pencil"></i>&nbsp;แก้ไขข้อมูล
 					</a>
 				</li>
-				<li>
-					<a href="#edit" data-toggle="tab" ng-click="resetData()">
+				<li ng-class=" data.state === 'ADD' ? 'active' : ''">
+					<a href="" data-toggle="tab" ng-click="changeState('ADD', $event)">
 						<i class="fa fa-plus"></i>&nbsp;เพิ่มข้อมูล
 					</a>
 				</li>
-				<li class="active">
-					<a href="#search" data-toggle="tab" ng-click="resetData()">
+				<li ng-class=" data.state === 'SEARCH' ? 'active' : ''">
+					<a href="" data-toggle="tab" ng-click="changeState('SEARCH', $event)">
 						<i class="fa fa-search"></i>&nbsp;ค้นหา
 					</a>
 				</li>
-				<li class="pull-left header"><i class="fa fa-th"></i>ข้อมูลคำนำหน้า</li>
+				<li class="pull-left header"><i class="fa fa-th"></i>ข้อมูลกิจกรรม</li>
 			</ul>
 			<div class="tab-content">
 				<!-- แก้ไข -->
-				<div class="tab-pane" id="add">
+				<div ng-class=" data.state === 'EDIT' ? 'tab-pane active' : 'tab-pane'" id="edit">
 					<div class="container-fluid">
 						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="*ชื่อเหตุการณ์" ng-model="data.EVENT_NAME" required="true"></input-box>
+									<input-box label="*ชื่อเหตุการณ์" ng-model="data.eventType.EVENT_TYPE_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-confirm">*ยืนยัน : </label><br>
+										<label for="choose-confirm">*ยืนยัน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+											<label ng-class="data.eventType.CONFIRM == 2 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.CONFIRM = 2">
 												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+											<label ng-class="data.eventType.CONFIRM == 1 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.CONFIRM = 1">
 												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+											<label ng-class="data.eventType.CONFIRM == 0 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.CONFIRM = 0">
 												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
 											</label>
 										</div>
@@ -51,12 +52,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-score">*คะแนน : </label><br>
+										<label for="choose-score">*คะแนน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+											<label ng-class="data.eventType.SCORE == 1 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.SCORE = 1">
 												<input type="radio" name="score" autocomplete="off"> ต้องใส่
 											</label>
-											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+											<label ng-class="data.eventType.SCORE == 0 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.SCORE = 0">
 												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
 											</label>
 										</div>
@@ -66,12 +68,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-status">*สถานะ : </label><br>
+										<label for="choose-status">สถานะ : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
+											<label ng-class="data.eventType.ACTIVE == 1 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
+											<label ng-class="data.eventType.ACTIVE == 0 ? 'btn btn-primary active' : 'btn btn-primary'" ng-click="data.eventType.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -82,7 +85,7 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success">แก้ไขข้อมูล</button>
+										<button class="btn btn-success" ng-click="saveEditEventType(data.eventType)">แก้ไขข้อมูล</button>
 										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
@@ -92,26 +95,27 @@
 					</div>
 				</div>
 				<!-- เพิ่ม -->
-				<div class="tab-pane" id="edit">
+				<div ng-class=" data.state === 'ADD' ? 'tab-pane active' : 'tab-pane'" id="add">
 					<div class="container-fluid">
 						<form name="search-form">
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="*ชื่อเหตุการณ์" ng-model="data.EVENT_NAME" required="true"></input-box>
+									<input-box label="*ชื่อเหตุการณ์" ng-model="data.eventType.EVENT_TYPE_NAME" required="true"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-confirm">*ยืนยัน : </label><br>
+										<label for="choose-confirm">*ยืนยัน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 2">
 												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 1">
 												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 0">
 												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
 											</label>
 										</div>
@@ -121,12 +125,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-score">*คะแนน : </label><br>
+										<label for="choose-score">*คะแนน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.SCORE = 1">
 												<input type="radio" name="score" autocomplete="off"> ต้องใส่
 											</label>
-											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.SCORE = 0">
 												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
 											</label>
 										</div>
@@ -136,12 +141,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-status">*สถานะ : </label><br>
+										<label for="choose-status">*สถานะ : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -152,7 +158,7 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success" ng-click="addEventType(data)">เพิ่มข้อมูล</button>
+										<button class="btn btn-success" ng-click="addEventType(data.eventType)">เพิ่มข้อมูล</button>
 										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
@@ -162,26 +168,27 @@
 					</div>
 				</div>
 				<!-- ค้นหา -->
-				<div class="tab-pane active" id="search">
+				<div ng-class=" data.state === 'SEARCH' ? 'tab-pane active' : 'tab-pane'" id="search">
 					<div class="container-fluid">
 						<form name="search-form" novalidate>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
-									<input-box label="ชื่อเหตุการณ์" ng-model="EVENT_NAME" required="false"></input-box>
+									<input-box label="ชื่อเหตุการณ์" ng-model="data.eventType.EVENT_TYPE_NAME" required="false"></input-box>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-confirm">ยืนยัน : </label><br>
+										<label for="choose-confirm">ยืนยัน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons" name="choose-confirm">
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 2">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 2">
 												<input type="radio" name="comfirm" autocomplete="off"> ยืนยัน
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 1">
 												<input type="radio" name="comfirm" autocomplete="off"> ไม่เข้าร่วม
 											</label>
-											<label class="btn btn-primary" ng-click="data.CONFIRM = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.CONFIRM = 0">
 												<input type="radio" name="comfirm" autocomplete="off"> สละสิทธิ์
 											</label>
 										</div>
@@ -191,12 +198,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-score">คะแนน : </label><br>
+										<label for="choose-score">คะแนน : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.SCORE = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.SCORE = 1">
 												<input type="radio" name="score" autocomplete="off"> ต้องใส่
 											</label>
-											<label class="btn btn-primary" ng-click="data.SCORE = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.SCORE = 0">
 												<input type="radio" name="score" autocomplete="off"> ไม่ต้องใส่
 											</label>
 										</div>
@@ -206,12 +214,13 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="form-group">
-										<label for="choose-status">สถานะ : </label><br>
+										<label for="choose-status">สถานะ : </label>
+										<br>
 										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 1">
+											<label class="btn btn-primary" ng-click="data.eventType.ACTIVE = 1">
 												<input type="radio" name="status" autocomplete="off"> ใช้งาน
 											</label>
-											<label class="btn btn-primary" ng-click="data.ACTIVE = 0">
+											<label class="btn btn-primary" ng-click="data.eventType.ACTIVE = 0">
 												<input type="radio" name="status" autocomplete="off"> ไม่ใช้งาน
 											</label>
 										</div>
@@ -222,7 +231,7 @@
 							<div class="row">
 								<div class="col-md-offset-3 col-md-6">
 									<div class="pull-right">
-										<button class="btn btn-success" ng-click="getEventType(data)">ค้นหาข้อมูล</button>
+										<button class="btn btn-success" ng-click="getEventType(data.eventType)">ค้นหาข้อมูล</button>
 										<button class="btn btn-danger" ng-click="resetData()">ยกเลิก</button>
 									</div>
 								</div>
@@ -246,41 +255,17 @@
 		<div class="box">
 			<div class="box-header">
 				<h3 class="box-title">ตารางข้อมูลกิจกรรม</h3>
+				<div class="pull-right">
+					<button class="btn btn-info" ng-click="updateEventType(selectedList)" ng-disabled="selectedList.length > 1">แก้ไข &nbsp;<i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger" ng-click="deleteEventType(selectedList)">ลบข้อมูล &nbsp;<i class="fa fa-trash"></i></button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-				<table ng-show="myValues.length > 0" ng-table="tableParams" class="table table-bordered  table-hover">
-					<tr ng-repeat="row in $data">
-						<td style="width: 1%;">
-							<input type="checkbox" class="custom-checkbox">
-						</td>
-						<td class="text-center" data-title="'ชื่อเหตุการณ์'" sortable="'EVENT_TYPE_NAME'">{{row.EVENT_TYPE_NAME}}</td>
-						<td class="text-center" data-title="'ยืนยัน'" sortable="'CONFIRM'">{{row.CONFIRM}}</td>
-						<td class="text-center" data-title="'คะแนน'" sortable="'SCORE'">{{row.SCORE}}</td>
-						<td class="text-center" data-title="'สถานะ'" sortable="'ACTIVE'">{{row.ACTIVE}}</td>
-					</tr>
-				</table>
-				<table class="table table-bordered  table-hover" ng-hide="myValues.length > 0">
-					<thead>
-						<tr>
-							<th class="text-center">ชื่อเหตุการณ์</th>
-							<th class="text-center">ยืนยัน</th>
-							<th class="text-center">คะแนน</th>
-							<th class="text-center">สถานะ</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td colspan="5" class="text-center">ไม่พบข้อมูล</td>
-						</tr>
-					</tbody>
-				</table>
+				<div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection style="width: auto;height: 200px;"></div>
 			</div>
 			<!-- /.box-body -->
 		</div>
 		<!-- /.box -->
 	</div>
 </div>
-
-
-

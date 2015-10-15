@@ -8,35 +8,37 @@ module.exports = function (app) {
 	app.use('/bower_components', loopback.static(__dirname + '../../../client/bower_components'));
 	app.use('/css', loopback.static(__dirname + '../../../client/css'));
 	app.use('/views', loopback.static(__dirname + '../../../client/views'));
-	
+
 	app.get('/index', function (req, res, next) {
-		res.sendFile('index.html', { root: __dirname + '../../../client' });
+		res.sendFile('index.html', {
+			root: __dirname + '../../../client'
+		});
 	});
-	
+
 	app.get('/signin', function (req, res, next) {
 		res.sendFile('index.html', {
 			root: __dirname + '../../../client'
 		});
 	});
-	
+
 	app.get('/signup', function (req, res, next) {
 		res.sendFile('index.html', {
 			root: __dirname + '../../../client'
 		});
 	});
-	
+
 	app.get('/dashboard*', function (req, res, next) {
 		res.sendFile('index.html', {
 			root: __dirname + '../../../client'
 		});
 	});
-	
+
 	app.get('/signupSuccess', function (req, res, next) {
 		res.sendFile('index.html', {
 			root: __dirname + '../../../client'
 		});
 	});
-	
+
 	//verify user
 	app.get('/verified', function (req, res) {
 		res.sendFile('index.html', {
